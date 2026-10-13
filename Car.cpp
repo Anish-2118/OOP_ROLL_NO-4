@@ -1,4 +1,4 @@
-#include <iosream>
+#include <iostream>
 #include <string>
 using namespace std;
 class Vehicle
@@ -27,27 +27,27 @@ class Vehicle
 			cout<<"Year"<<year<<endl;
 		}
 };
-class Car: public Vehile
+class Car : public Vehicle
 {
 	protected:
 		int numberOfDoors;
 		string fuelType;
 	public:
-		car() : Vehicle()
+		Car() : Vehicle()
 		{
-			numberofDoors = 4;
+			numberOfDoors = 4;
 			fuelType = "Petrol";
 		}
-		car(string b, string m, int y, int doors, string fuel) : vehicle(b, n, y)
+		Car(string b, string m, int y, int doors, string fuel) : Vehicle(b, m, y)
 		{
-			numberofdoors= doors;
+			numberOfDoors= doors;
 			fuelType = fuel;
 		}
 		void displayCar()
 		{
 			displayVehicle();
-			cout<<"Number of Doors"<<numberofdoors<endl;
-			cout<<"Fuel Type"<<fuelType<endl;
+			cout<<"Number of Doors"<<numberOfDoors<<endl;
+			cout<<"Fuel Type"<<fuelType<<endl;
 		}
  };
  class ElectricCar : public Car
@@ -62,15 +62,23 @@ class Car: public Vehile
  			range = 0;
  			
 		 }
-		 ElectricCar(string b, string m, int y, int doors, string fuel, int battery, int r) : Car(b, n, y, doors, fuel)
+		 ElectricCar(string b, string m, int y, int doors, string fuel, int battery, int r) : Car(b, m, y, doors, fuel)
 		 {
 		 	batteryCapacity = battery;
 		 	range = r;
 		 }
 		 void displayElectricCar()
 		 {
-		 	displayCar;
-		 	cout<<"Battery Capacity: "<<batteryCapacity<endl;
+		 	displayCar();
+		 	cout<<"Battery Capacity: "<<batteryCapacity<<endl;
 		 	cout<<"Range: "<<range<<endl;
 		 }
- }
+ };
+ 
+ int main() {
+    cout << "\n===== Multilevel Inheritance - Electric Car =====" << endl;
+    ElectricCar tesla("Tesla", "Model S", 2023, 4, "Electric", 100, 650);
+    tesla.displayElectricCar();
+    
+    return 0;
+}
